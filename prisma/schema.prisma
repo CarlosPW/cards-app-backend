@@ -32,7 +32,7 @@ model Cards {
   updatedAt    DateTime @updatedAt
 
   title             String
-  lastTimePracticed DateTime
+  lastTimePracticed DateTime @default(now())
 
   userId       Int
   user         User @relation(fields: [userId], references: [id])
