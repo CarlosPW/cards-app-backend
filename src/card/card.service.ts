@@ -37,4 +37,30 @@ export class CardService {
 
     return newCard;
   }
+
+  // TODO: actualizar tarjeta
+  async updateCard(userId: number, cardId: string, dto: CardDto) {
+    const cardUpdated = await this.prisma.cards.updateMany({
+      where: {
+        userId,
+        id: Number(cardId),
+      },
+      data: {
+        ...dto,
+      },
+    });
+
+    return cardUpdated;
+  }
+
+  async deleteCard(userId: number, cardId: string) {
+    const cardDeleted = await this.prisma.cards.deleteMany({
+      where: {
+        userId,
+        id: Number(cardId),
+      },
+    });
+
+    return cardDeleted;
+  }
 }

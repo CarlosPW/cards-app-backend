@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { getUser } from 'src/auth/decorator';
 import { JwtGuard } from 'src/auth/guard';
 import { CardService } from './card.service';
@@ -14,8 +23,22 @@ export class CardController {
     return this.cardService.getCards(userId);
   }
 
-  @Post('')
+  @Post()
   createCard(@getUser('id') userId: number, @Body() dto: CardDto) {
     return this.cardService.createCard(userId, dto);
+  }
+
+  @Put(':id')
+  updateCard(
+    @getUser('id') userId: number,
+    @Param('id') cardId: string,
+    @Body() dto: CardDto,
+  ) {
+    return this.cardService.updateCard(userId, cardId, dto);
+  }
+
+  @Delete(':id')
+  deleteCard(@getUser('id') userId: number, @Param('id') cardId: string) {
+    return this.cardService.deleteCard(userId, cardId);
   }
 }
