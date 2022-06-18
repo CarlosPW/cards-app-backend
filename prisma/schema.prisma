@@ -45,6 +45,7 @@ model CardItem {
   title        String
   description  String?
 
+  userId       Int
   cardId       Int
   card         Cards @relation(fields: [cardId], references: [id])
 }

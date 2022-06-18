@@ -11,6 +11,9 @@ export class CardService {
       where: {
         userId,
       },
+      include: {
+        items: true,
+      },
     });
 
     if (!cards) return [];
@@ -38,7 +41,7 @@ export class CardService {
     return newCard;
   }
 
-  // TODO: actualizar tarjeta
+  // TODO: PROBAR SI FUNCIONA
   async updateCard(userId: number, cardId: string, dto: CardDto) {
     const cardUpdated = await this.prisma.cards.updateMany({
       where: {
