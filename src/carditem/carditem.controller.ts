@@ -31,11 +31,16 @@ export class CarditemController {
     return this.cardItemService.createCardItem(userId, Number(cardId), dto);
   }
 
-  @Delete(':id')
+  @Delete(':cardId/:cardItemId')
   deleteCardItem(
     @getUser('id') userId: number,
-    @Param('id') cardItemId: string,
+    @Param('cardId') cardId: string,
+    @Param('cardItemId') cardItemId: string,
   ) {
-    return this.cardItemService.deleteCardItem(userId, Number(cardItemId));
+    return this.cardItemService.deleteCardItem(
+      userId,
+      Number(cardId),
+      cardItemId,
+    );
   }
 }

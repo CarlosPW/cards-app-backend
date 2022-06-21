@@ -30,8 +30,7 @@ export class CarditemService {
 
     const newCardItem = await this.prisma.cardItem.create({
       data: {
-        userId,
-        cardId,
+        cardId: cardId,
         ...dto,
       },
     });
@@ -39,11 +38,11 @@ export class CarditemService {
     return newCardItem;
   }
 
-  async deleteCardItem(userId: number, cardItemId: number) {
+  async deleteCardItem(userId: number, cardId: number, cardItemId: string) {
     const findCardItem = await this.prisma.cards.findFirst({
       where: {
         userId,
-        id: cardItemId,
+        id: cardId,
       },
     });
 
