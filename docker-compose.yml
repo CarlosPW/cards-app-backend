@@ -6,8 +6,8 @@ services:
       - 5432:5432
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123
-      POSTGRES_DB: nest
+      POSTGRES_PASSWORD: xMoM8BC3BeS2SwNCOIdw
+      POSTGRES_DB: railway
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 volumes:
