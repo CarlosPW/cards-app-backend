@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Put, UseGuards } from '@nestjs/common';
-import { User } from '@prisma/client';
+// import { User } from '@prisma/client';
 
 import { UserService } from './user.service';
 import { getUser } from 'src/auth/decorator';
@@ -12,12 +12,12 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Get('profile')
-  getProfile(@getUser() user: User) {
+  getProfile(@getUser() user: any) {
     return user;
   }
 
   @Put('profile')
-  updateProfile(@getUser() user: User, @Body() dto: UserDto) {
+  updateProfile(@getUser() user: any, @Body() dto: UserDto) {
     return this.userService.updateProfile(user, dto);
   }
 }
