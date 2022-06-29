@@ -6,6 +6,7 @@ import { CardModule } from './card/card.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { CarditemController } from './carditem/carditem.controller';
 import { CarditemService } from './carditem/carditem.service';
+import { CarditemModule } from './carditem/carditem.module';
 
 @Module({
   imports: [
@@ -16,8 +17,7 @@ import { CarditemService } from './carditem/carditem.service';
     UserModule,
     CardModule,
     PrismaModule,
+    CarditemModule,
   ],
-  controllers: [CarditemController],
-  providers: [CarditemService],
 })
 export class AppModule {}
