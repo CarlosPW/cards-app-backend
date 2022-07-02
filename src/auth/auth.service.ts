@@ -51,6 +51,17 @@ export class AuthService {
     return this.signToken(user.id, user.email);
   }
 
+  async vaildateToken(token: string) {
+    try {
+      const jwtValidation = await this.jwt.verify(token, {
+        secret: this.config.get('JWT_SECRET'),
+      });
+      return jwtValidation;
+    } catch (error) {
+      throw new ForbiddenException('Invalid Token');
+    }
+  }
+
   async signToken(
     userId: number,
     email: string,

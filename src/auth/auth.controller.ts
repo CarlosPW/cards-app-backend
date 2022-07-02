@@ -16,4 +16,9 @@ export class AuthController {
   signin(@Body() dto: AuthDto) {
     return this.authService.signin(dto);
   }
+
+  @Post('token-validation')
+  tokenValidation(@Body() body: { token: string }) {
+    return this.authService.vaildateToken(body.token);
+  }
 }
