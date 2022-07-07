@@ -23,6 +23,11 @@ export class CardController {
     return this.cardService.getCards(userId);
   }
 
+  @Get(':id')
+  getCardById(@getUser('id') userId: number, @Param('id') cardId: string) {
+    return this.cardService.getCardById(userId, cardId);
+  }
+
   @Post()
   createCard(@getUser('id') userId: number, @Body() dto: CardDto) {
     return this.cardService.createCard(userId, dto);

@@ -21,6 +21,19 @@ export class CardService {
     return cards;
   }
 
+  async getCardById(userId: number, cardId: string) {
+    const findCard = await this.prisma.cards.findFirst({
+      where: {
+        userId,
+        id: Number(cardId),
+      },
+    });
+
+    if (!findCard) return { message: 'Esta tarjeta no existe.' };
+
+    return findCard;
+  }
+
   async createCard(userId: number, dto: CardDto) {
     const findCard = await this.prisma.cards.findFirst({
       where: {
