@@ -27,6 +27,9 @@ export class CardService {
         userId,
         id: Number(cardId),
       },
+      include: {
+        items: true,
+      },
     });
 
     if (!findCard) return { message: 'Esta tarjeta no existe.' };
